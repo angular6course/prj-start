@@ -1,7 +1,7 @@
-import {Component, Injectable, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../recipe.model';
 import {RecipeService} from '../recipe.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -13,7 +13,8 @@ export class RecipeDetailComponent implements OnInit {
   id: number;
 
   constructor(private readonly recipeService: RecipeService,
-              private readonly route: ActivatedRoute) {
+              private readonly route: ActivatedRoute,
+              private readonly router: Router) {
   }
 
   ngOnInit() {
@@ -30,4 +31,8 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService.addIngredientToShoppingList(this.recipe.ingredients);
   }
 
+  onEditRecipe() {
+    // this.router.navigate(['edit'], {relativeTo: this.route});
+    this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
+  }
 }
