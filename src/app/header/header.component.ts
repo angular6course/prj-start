@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {selector} from 'rxjs-compat/operator/publish';
+import {Component} from '@angular/core';
+import {DataStorageService} from '../shared/data-storage.service';
+import {Response} from '@angular/http';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,15 @@ import {selector} from 'rxjs-compat/operator/publish';
 })
 export class HeaderComponent {
 
+  constructor(private readonly dataStorageService: DataStorageService) {
+  }
+
+  onSaveData() {
+    this.dataStorageService.storeRecipes()
+      .subscribe(
+        (response: Response) => {
+          console.log(response);
+        }
+      );
+  }
 }

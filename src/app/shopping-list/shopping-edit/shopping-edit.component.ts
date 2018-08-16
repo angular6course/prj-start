@@ -44,6 +44,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     }
     this.editMode = false;
     form.reset();
+    form.form.markAsPristine();
   }
 
   ngOnDestroy(): void {
