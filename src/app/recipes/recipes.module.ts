@@ -8,6 +8,7 @@ import {RecipeItemComponent} from './recipe-list/recipe-item/recipe-item.compone
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {RecipesRoutingModule} from './recipes-routing.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -21,8 +22,8 @@ import {RecipesRoutingModule} from './recipes-routing.module';
     imports: [ // TODO stn order is important, RecipesROutinmodule needs to come first
       RecipesRoutingModule,
       CommonModule,
-      ReactiveFormsModule
-
+      ReactiveFormsModule,
+      SharedModule
     ]
   },
 )
