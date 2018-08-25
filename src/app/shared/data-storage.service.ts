@@ -3,7 +3,7 @@ import {RecipeService} from '../recipes/recipe.service';
 import {Recipe} from '../recipes/recipe.model';
 import {map} from 'rxjs/operators/map';
 import {AuthService} from '../auth/auth.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class DataStorageService {
@@ -16,7 +16,8 @@ export class DataStorageService {
     const token = this.authService.getToken();
     return this.http.put('https://ng-recipe-book-19bf9.firebaseio.com/recipes.json?auth='
       + token, this.recipeService.getRecipes(), {
-      observe: 'body'
+      observe: 'body',
+      headers: new HttpHeaders()
     });
   }
 
