@@ -24,7 +24,7 @@ export class SetToken implements Action {
   }
 }
 
-export type AuthActions = Signin | Signup | Logout | SetToken
+export type AuthActions = Signin | Signup | Logout | SetToken;
 
 
 
