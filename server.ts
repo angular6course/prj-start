@@ -7,6 +7,14 @@ import {enableProdMode} from '@angular/core';
 import * as express from 'express';
 import {join} from 'path';
 
+const domino = require('domino');
+const fs = require('fs');
+const path = require('path');
+const template = fs.readFileSync(path.join(__dirname, '.', 'dist', 'index.html')).toString();
+const win = domino.createWindow(template);
+global['window'] = win;
+global['document'] = win.document;
+
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
@@ -51,3 +59,5 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Node server listening on http://localhost:${PORT}`);
 });
+
+
